@@ -100,15 +100,24 @@ class MyClient(discord.Client):
                 "Send your text's color(red, black, white, blue or grey),\n text and path to your image file")
 
             m = await self.wait_for('message')
-            cont = m.content.split()
-            color, pallet = cont[0], {'red': '#FF0000', 'black': '#000000', 'white': '#FFFFFF', 'blue': '#0000FF',
-                                      'grey': '#C0C0C0'}
-            im, txt = Image.open(cont[-1]), ' '.join(cont[1:len(cont) - 1])
+            a = await self.wait_for('message')
+            b = await self.wait_for('message')
+            c = await self.wait_for('message')
+            im, txt_up, txt_down, pallet = Image.open(c.content), a.content, b.content, {'red': '#FF0000',
+                                                                                                  'black': '#000000',
+                                                                                                  'white': '#FFFFFF',
+                                                                                                  'blue': '#0000FF',
+                                                                                                  'grey': '#C0C0C0'}
             font = ImageFont.truetype(r'C:\Users\MAX-Ryzen\Desktop\Roboto\Font.ttf', size=75)
             draw_text = ImageDraw.Draw(im)
-            width, height = draw_text.textsize(txt, font=font)
-            position: tuple = ((im.width - width) / 2, im.height - 100)
-            draw_text.text(position, txt, font=font, fill=pallet[color])
+            # lower text
+            width, height = draw_text.textsize(txt_down, font=font)
+            position_down: tuple = ((im.width - width) / 2, im.height - 100)
+            draw_text.text(position_down, txt_down, font=font, fill=pallet[m.content])
+            # upper text
+            position_up: tuple = ((im.width - width) / 2, im.height - 1070)
+            draw_text.text(position_up, txt_up, font=font, fill=pallet[m.content])
+            # converting to bytes
             image_content = io.BytesIO()
             im.seek(0)
             im.save(image_content, format='JPEG')
@@ -117,4 +126,4 @@ class MyClient(discord.Client):
 
 
 client = MyClient()
-client.run('Token here')
+client.run('NzgwNzQwMzE1NjMxODQ1Mzg2.X7zfFA.B5KLlctgnvHgks7dM2S_qUW9IAk')
