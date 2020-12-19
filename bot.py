@@ -79,7 +79,7 @@ class MyClient(discord.Client):
                                                                                                   'white': '#FFFFFF',
                                                                                                   'blue': '#0000FF',
                                                                                                   'grey': '#C0C0C0'}
-                    font = ImageFont.truetype(r'C:\Users\MAX-Ryzen\Desktop\Roboto\Font.ttf', size=75)
+                    font = ImageFont.truetype(r'Font.ttf', size=75)
                     draw_text = ImageDraw.Draw(im)
                     # lower text
                     width, height = draw_text.textsize(txt_down, font=font)
@@ -104,11 +104,11 @@ class MyClient(discord.Client):
             b = await self.wait_for('message')
             c = await self.wait_for('message')
             im, txt_up, txt_down, pallet = Image.open(c.content), a.content, b.content, {'red': '#FF0000',
-                                                                                                  'black': '#000000',
-                                                                                                  'white': '#FFFFFF',
-                                                                                                  'blue': '#0000FF',
-                                                                                                  'grey': '#C0C0C0'}
-            font = ImageFont.truetype(r'C:\Users\MAX-Ryzen\Desktop\Roboto\Font.ttf', size=75)
+                                                                                         'black': '#000000',
+                                                                                         'white': '#FFFFFF',
+                                                                                         'blue': '#0000FF',
+                                                                                         'grey': '#C0C0C0'}
+            font = ImageFont.truetype(r'Font.ttf', size=75)
             draw_text = ImageDraw.Draw(im)
             # lower text
             width, height = draw_text.textsize(txt_down, font=font)
@@ -126,4 +126,4 @@ class MyClient(discord.Client):
 
 
 client = MyClient()
-client.run('Token here')
+client.run('NzgwNzQwMzE1NjMxODQ1Mzg2.X7zfFA.cTRpwzskoNWvlphK0NLJVQc0Nyc')
