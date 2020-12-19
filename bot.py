@@ -1,5 +1,5 @@
 import io
-
+from token import token
 import aiohttp
 import discord
 from PIL import Image, ImageDraw, ImageFont
@@ -126,4 +126,4 @@ class MyClient(discord.Client):
 
 
 client = MyClient()
-client.run('Token here')
+client.run(token)
