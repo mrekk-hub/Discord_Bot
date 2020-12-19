@@ -1,10 +1,11 @@
 import io
-from token import token
+
 import aiohttp
 import discord
 from PIL import Image, ImageDraw, ImageFont
 
 import pass_gen
+from token import token
 
 
 class MyClient(discord.Client):
