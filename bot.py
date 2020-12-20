@@ -3,7 +3,7 @@ import io
 import aiohttp
 import discord
 from PIL import Image, ImageDraw, ImageFont
-from token1 import token
+from bot_token import token
 import pass_gen
 
 
