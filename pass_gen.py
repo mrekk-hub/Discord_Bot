@@ -26,7 +26,7 @@ def code_s(length: int) -> str:
 
 def verbal(length: int) -> str:
     s = []
-    with open(r'C:\Users\MAX-Ryzen\Desktop\pythonProjectBotFinal\ENRUS.TXT') as file:
+    with open(r'ENRUS.TXT') as file:
         content = file.readlines()
         for i in range(length):
             a = r(10, 102000, 2)
