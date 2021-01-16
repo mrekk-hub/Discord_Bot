@@ -3,7 +3,6 @@ import io
 import aiohttp
 import discord
 from PIL import Image, ImageDraw, ImageFont
-from bot_token import token
 import pass_gen
 
 
@@ -158,4 +157,4 @@ class MyClient(discord.Client):
 
 
 client = MyClient()
-client.run(token)
+client.run('NzgwNzQwMzE1NjMxODQ1Mzg2.X7zfFA.DbFHMMVagmuWwL479VO369vWDIQ')
