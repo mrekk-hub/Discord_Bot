@@ -28,45 +28,60 @@ class MyClient(discord.Client):
 
         if message.content.startswith("$regular"):
             await message.channel.send("Send password's length")
-            f = False
-            while f is False:
+            f, a = False, False
+            while a is False or f is False:
                 try:
                     n = await self.wait_for("message")
+                    assert int(n.content) < 25
                     f = True
+                    a = True
                     await message.channel.send(
                         f"Your password: {pass_gen.code(int(n.content))}"
                     )
                 except ValueError:
                     f = False
                     await message.channel.send("Length must be a number. Try again.")
+                except AssertionError:
+                    a = False
+                    await message.channel.send("Your password way too long. Try again.")
 
         if message.content.startswith("$verbal"):
             await message.channel.send("Send password's length")
-            f = False
-            while f is False:
+            f, a = False, False
+            while a is False or f is False:
                 try:
                     n = await self.wait_for("message")
+                    assert int(n.content) < 6
                     f = True
+                    a = True
                     await message.channel.send(
                         f"Your password: {pass_gen.verbal(int(n.content))}"
                     )
                 except ValueError:
                     f = False
                     await message.channel.send("Length must be a number. Try again.")
+                except AssertionError:
+                    a = False
+                    await message.channel.send("Your password way too long. Try again.")
 
         if message.content.startswith("$special"):
             await message.channel.send("Send password's length")
-            f = False
-            while f is False:
+            f, a = False, False
+            while a is False or f is False:
                 try:
                     n = await self.wait_for("message")
+                    assert int(n.content) < 25
                     f = True
+                    a = True
                     await message.channel.send(
                         f"Your password: {pass_gen.code_s(int(n.content))}"
                     )
                 except ValueError:
                     f = False
                     await message.channel.send("Length must be a number. Try again.")
+                except AssertionError:
+                    a = False
+                    await message.channel.send("Your password way too long. Try again.")
 
         if message.content.startswith("$url"):
             await message.channel.send(
@@ -103,7 +118,7 @@ class MyClient(discord.Client):
                         position_down, txt_down, font=font, fill=pallet[m.content]
                     )
                     # upper text
-                    position_up: tuple = ((im.width - width) / 2, im.height - 1070)
+                    position_up: tuple = ((im.width - width) / 2, height - 90)
                     draw_text.text(
                         position_up, txt_up, font=font, fill=pallet[m.content]
                     )
@@ -144,7 +159,7 @@ class MyClient(discord.Client):
             position_down: tuple = ((im.width - width) / 2, im.height - 100)
             draw_text.text(position_down, txt_down, font=font, fill=pallet[m.content])
             # upper text
-            position_up: tuple = ((im.width - width) / 2, im.height - 1070)
+            position_up: tuple = ((im.width - width) / 2, height - 90)
             draw_text.text(position_up, txt_up, font=font, fill=pallet[m.content])
             # converting to bytes
             image_content = io.BytesIO()
