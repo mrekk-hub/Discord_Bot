@@ -47,40 +47,40 @@ class MyClient(discord.Client):
 
         if message.content.startswith("$verbal"):
             await message.channel.send("Send password's length")
-            f, a = False, False
-            while a is False or f is False:
+            l, d = False, False
+            while d is False or l is False:
                 try:
                     n = await self.wait_for("message")
                     assert 0 < int(n.content) < 6
-                    f = True
-                    a = True
+                    l = True
+                    d = True
                     await message.channel.send(
                         f"Your password: {pass_gen.verbal(int(n.content))}"
                     )
                 except ValueError:
-                    f = False
+                    l = False
                     await message.channel.send("Length must be a number. Try again.")
                 except AssertionError:
-                    a = False
+                    d = False
                     await message.channel.send("Your password way too long (or it has zero length). Try again.")
 
         if message.content.startswith("$special"):
             await message.channel.send("Send password's length")
-            f, a = False, False
-            while a is False or f is False:
+            j, k = False, False
+            while j is False or k is False:
                 try:
                     n = await self.wait_for("message")
                     assert 0 < int(n.content) < 25
-                    f = True
-                    a = True
+                    j = True
+                    k = True
                     await message.channel.send(
                         f"Your password: {pass_gen.code_s(int(n.content))}"
                     )
                 except ValueError:
-                    f = False
+                    j = False
                     await message.channel.send("Length must be a number. Try again.")
                 except AssertionError:
-                    a = False
+                    k = False
                     await message.channel.send("Your password way too long (or it has zero length). Try again.")
 
         if message.content.startswith("$url"):
@@ -172,4 +172,4 @@ class MyClient(discord.Client):
 
 
 client = MyClient()
-client.run("NzgwNzQwMzE1NjMxODQ1Mzg2.X7zfFA.uKd1-CUwlDVRWm2HD0kcrOQZwzs")
+client.run("NzgwNzQwMzE1NjMxODQ1Mzg2.X7zfFA.801C4tzTQLBMIaAz6ZKO3sWIm10")
