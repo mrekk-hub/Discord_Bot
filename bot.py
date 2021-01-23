@@ -28,59 +28,59 @@ class MyClient(discord.Client):
 
         if message.content.startswith("$regular"):
             await message.channel.send("Send password's length")
-            f, a = False, False
-            while a is False or f is False:
+            f, a = True, True
+            while a or f:
                 try:
                     n = await self.wait_for("message")
+                    f = False
                     assert 0 < int(n.content) < 25
-                    f = True
-                    a = True
+                    a = False
                     await message.channel.send(
                         f"Your password: {pass_gen.code(int(n.content))}"
                     )
                 except ValueError:
-                    f = False
+                    f = True
                     await message.channel.send("Length must be a number. Try again.")
                 except AssertionError:
-                    a = False
+                    a = True
                     await message.channel.send("Your password way too long (or it has zero length). Try again.")
 
         if message.content.startswith("$verbal"):
             await message.channel.send("Send password's length")
-            l, d = False, False
-            while d is False or l is False:
+            f, a = True, True
+            while a or f:
                 try:
                     n = await self.wait_for("message")
+                    f = False
                     assert 0 < int(n.content) < 6
-                    l = True
-                    d = True
+                    a = False
                     await message.channel.send(
                         f"Your password: {pass_gen.verbal(int(n.content))}"
                     )
                 except ValueError:
-                    l = False
+                    f = True
                     await message.channel.send("Length must be a number. Try again.")
                 except AssertionError:
-                    d = False
+                    a = True
                     await message.channel.send("Your password way too long (or it has zero length). Try again.")
 
         if message.content.startswith("$special"):
             await message.channel.send("Send password's length")
-            j, k = False, False
-            while j is False or k is False:
+            f, a = True, True
+            while a or f:
                 try:
                     n = await self.wait_for("message")
+                    f = False
                     assert 0 < int(n.content) < 25
-                    j = True
-                    k = True
+                    a = False
                     await message.channel.send(
                         f"Your password: {pass_gen.code_s(int(n.content))}"
                     )
                 except ValueError:
-                    j = False
+                    f = True
                     await message.channel.send("Length must be a number. Try again.")
                 except AssertionError:
-                    k = False
+                    a = True
                     await message.channel.send("Your password way too long (or it has zero length). Try again.")
 
         if message.content.startswith("$url"):
